@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6335fe73775d6a438949a3b8e354059, type: 3}
   m_Name: UnitScriptableObject
   m_EditorClassIdentifier: 
-  unitName: 
-  stagger: 0
-  health: 0
-  bluntHealth: 0
+  unitName: GuyGuy
+  stagger: 100
+  health: 100
+  bluntHealth: 2
+  bluntStagger: 1
+  slashHealth: 0
+  slashStagger: 3
+  pierceHealth: 4
+  pierceStagger: 3
+  alive: 1
