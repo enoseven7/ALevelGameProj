@@ -25,14 +25,11 @@ public class AtkDiceScriptableObject : ScriptableObject
         Haste,
         Protection,
         Strength,
-        Fragile
+        Fragile,
+        None
     }
 
     // Creating the variables for the attack dice, having a private version where the value is stored and a public version where the value can be accessed but not changed
-
-    [SerializeField]
-    float damage;
-    public float Damage { get => damage; private set => damage = value; }
 
     [SerializeField]
     AttackType atkType;
