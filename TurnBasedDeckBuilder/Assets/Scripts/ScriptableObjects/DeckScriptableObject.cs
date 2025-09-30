@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DeckScriptableObject", menuName = "ScriptableObjects/DeckScriptableObject")]
@@ -9,11 +10,11 @@ public class DeckScriptableObject : ScriptableObject
     public CardScriptableObject[] TotalCards { get => totalCards; private set => totalCards = value; }
 
     [SerializeField]
-    CardScriptableObject[] hand;
+    CardScriptableObject[] hand = new CardScriptableObject[5];
     public CardScriptableObject[] Hand { get => hand; private set => hand = value; }
 
     [SerializeField]
-    CardScriptableObject[] discardPile;
+    CardScriptableObject[] discardPile = new CardScriptableObject[4];
     public CardScriptableObject[] DiscardPile { get => discardPile; private set => discardPile = value; }
 
     //A simple shuffle method, which just swaps cards around randomly then returns the shuffled deck
@@ -23,7 +24,7 @@ public class DeckScriptableObject : ScriptableObject
         for (int i = 0; i < shuffledDeck.Length; i++)
         {
             CardScriptableObject temp = shuffledDeck[i];
-            int randomIndex = Random.Range(i, shuffledDeck.Length);
+            int randomIndex = UnityEngine.Random.Range(i, shuffledDeck.Length);
             shuffledDeck[i] = shuffledDeck[randomIndex];
             shuffledDeck[randomIndex] = temp;
         }
