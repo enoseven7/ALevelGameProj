@@ -1,15 +1,32 @@
+using NUnit.Framework;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using static UnitScriptableObject;
 
 [CreateAssetMenu(fileName = "UnitScriptableObject", menuName = "ScriptableObjects/UnitScriptableObject")]
 public class UnitScriptableObject : ScriptableObject
 {
-    public enum ResistanceValues
+    public enum ResistanceValue
     {
         Ineffective, //x0.25
         Endured, //0.5x
         Normal, //x1
         Weak, //x1.5
         Fatal //x2
+    }
+
+    public enum DamageType
+    {
+        Slash,
+        Pierce,
+        Blunt
+    }
+
+    public enum ResistanceType
+    {
+        Health,
+        Stagger
     }
 
     [SerializeField]
@@ -24,31 +41,46 @@ public class UnitScriptableObject : ScriptableObject
     float health;
     public float Health { get => health; set => health = value; }
 
-    [SerializeField]
-    ResistanceValues bluntHealth;
-    public ResistanceValues BountHealth { get => bluntHealth; set => bluntHealth = value; }
+    [System.Serializable]
+    public struct ResistanceEntry
+    {
+        public DamageType damageType;
+        public ResistanceType resistanceType;
+        public ResistanceValue value;
+    }
 
-    [SerializeField]
-    ResistanceValues bluntStagger;
-    public ResistanceValues BountStagger { get => bluntStagger; set => bluntStagger = value; }
+    [SerializeField] private List<ResistanceEntry> resistances;
 
-    [SerializeField]
-    ResistanceValues slashHealth;
-    public ResistanceValues SlashHealth { get => slashHealth; set => slashHealth = value; }
+    private Dictionary<(DamageType, ResistanceType), ResistanceValue> resistanceDict;
 
-    [SerializeField]
-    ResistanceValues slashStagger;
-    public ResistanceValues SlashStagger { get => slashStagger; set => slashStagger = value; }
+    private void OnEnable()
+    {
+        resistanceDict = new Dictionary<(DamageType, ResistanceType), ResistanceValue>();
+        foreach (var res in resistances)
+        {
+            resistanceDict[(res.damageType, res.resistanceType)] = res.value;
+        }
+    }
 
-    [SerializeField]
-    ResistanceValues pierceHealth;
-    public ResistanceValues PierceHealth { get => pierceHealth; set => pierceHealth = value; }
+    public ResistanceValue GetResistance(DamageType dmg, ResistanceType resType)
+    {
+        if (resistanceDict.TryGetValue((dmg, resType), out var value))
+            return value;
 
-    [SerializeField]
-    ResistanceValues pierceStagger;
-    public ResistanceValues PierceStagger { get => pierceStagger; set => pierceStagger = value; }
+        return ResistanceValue.Normal; // default
+    }
 
-    [SerializeField]
-    bool alive;
-    public bool Alive { get => alive; set => alive = value; }
+    [System.Serializable]
+    public struct SpeedDice
+    {
+        public int minRoll;
+        public int maxRoll;
+        public bool enabledAtStart;
+    }
+
+    [SerializeField] private List<SpeedDice> speedDiceList;
+
+    [SerializeField] private DeckScriptableObject deck;
+    public DeckScriptableObject Deck {  get => deck; set => deck = value; }
+
 }

@@ -13,8 +13,8 @@ public class CardScriptableObject : ScriptableObject
     public int EnergyCost { get => energyCost; private set => energyCost = value; }
 
     [SerializeField]
-    Image cardImg;
-    public Image CardImg { get => cardImg; private set => cardImg = value; }
+    Sprite cardImg;
+    public Sprite CardImg { get => cardImg; private set => cardImg = value; }
 
     [SerializeField]
     string cardName;
