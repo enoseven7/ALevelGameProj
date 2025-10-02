@@ -31,7 +31,7 @@ public class UnitScriptableObject : ScriptableObject
 
     [SerializeField]
     string unitName;
-    public string Name { get => name; set => name = value; }
+    public string UnitName { get => name; set => name = value; }
 
     [SerializeField]
     float stagger;
@@ -82,5 +82,9 @@ public class UnitScriptableObject : ScriptableObject
 
     [SerializeField] private DeckScriptableObject deck;
     public DeckScriptableObject Deck {  get => deck; set => deck = value; }
+
+    [SerializeField]
+    private bool player;
+    public bool Player { get => player; set => player = value; }
 
 }

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6335fe73775d6a438949a3b8e354059, type: 3}
+  m_Name: EvilGuy
+  m_EditorClassIdentifier: 
+  unitName: EVIL GUY
+  stagger: 459
+  health: 348
+  resistances:
+  - damageType: 0
+    resistanceType: 0
+    value: 2
+  - damageType: 0
+    resistanceType: 1
+    value: 1
+  - damageType: 1
+    resistanceType: 0
+    value: 3
+  - damageType: 1
+    resistanceType: 1
+    value: 2
+  - damageType: 2
+    resistanceType: 0
+    value: 4
+  - damageType: 2
+    resistanceType: 1
+    value: 2
+  speedDiceList:
+  - minRoll: 0
+    maxRoll: 0
+    enabledAtStart: 0
+  deck: {fileID: 11400000, guid: aeed2c27cddf3ac4bb0724f77ad1a745, type: 2}
+  player: 0
