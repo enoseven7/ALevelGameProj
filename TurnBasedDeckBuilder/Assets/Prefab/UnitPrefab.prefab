@@ -511,6 +511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4096844955810976513}
   - component: {fileID: 2914787598929137511}
+  - component: {fileID: 4214618540112220735}
   m_Layer: 0
   m_Name: UnitPrefab
   m_TagString: Untagged
@@ -550,6 +551,19 @@ MonoBehaviour:
   nameText: {fileID: 6409589513123451523}
   healthText: {fileID: 3493482034011092944}
   staggerText: {fileID: 1810314478243677305}
+  battleManager: {fileID: 0}
+--- !u!114 &4214618540112220735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283551772484849944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952284d286b1ef246a22582f6c257bb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5952014407185922189
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,8 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using System.Collections.Generic;
+using System.Linq;
 
 public class BattleManager : MonoBehaviour
 {
@@ -13,6 +16,12 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] private List<Transform> playerSpawnLocations;
     [SerializeField] private List<Transform> enemySpawnLocations;
+
+    public List<GameObject> cardUIs = new List<GameObject>();
+
+    public bool currentlySelected = false;
+
+    public Sprite placeholderSprite;
 
     void Start()
     {
@@ -31,7 +40,10 @@ public class BattleManager : MonoBehaviour
 
             // spawn the prefab in the scene
             GameObject unitGO = Instantiate(unitPrefab, unitContainer);
-            unitGO.name = unitInstance.name; // set object name for clarity
+            UnitBehaviour behaviour = unitGO.GetComponent<UnitBehaviour>();
+            behaviour.Init(unitInstance);
+
+            unitGO.name = unitInstance.unitName; // set object name for clarity
 
             if(unitInstance.player)
             {
@@ -53,4 +65,5 @@ public class BattleManager : MonoBehaviour
             
         }
     }
+
 }

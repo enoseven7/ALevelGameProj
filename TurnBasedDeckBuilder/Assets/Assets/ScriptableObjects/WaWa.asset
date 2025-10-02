@@ -38,5 +38,5 @@ MonoBehaviour:
   - minRoll: 0
     maxRoll: 0
     enabledAtStart: 0
-  deck: {fileID: 11400000, guid: aeed2c27cddf3ac4bb0724f77ad1a745, type: 2}
+  deck: {fileID: 11400000, guid: 749d6cfa62a924f4cb8d054bcf306646, type: 2}
   player: 1

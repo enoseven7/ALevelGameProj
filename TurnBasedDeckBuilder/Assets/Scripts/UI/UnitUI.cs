@@ -9,23 +9,19 @@ public class UnitUI : MonoBehaviour
 
     private UnitInstance unit;
 
-    [SerializeField] Collider2D col;
-
-    [SerializeField] bool currentlySelected = false;
+    public BattleManager battleManager;
+    public HandUIManager handUIManager;
     public void Initialise(UnitInstance unitInstance)
     {
         unit = unitInstance;
 
-        
+        battleManager = FindFirstObjectByType<BattleManager>();
+        handUIManager = FindFirstObjectByType<HandUIManager>();
 
-        nameText.text = unit.name;
+        nameText.text = unit.unitName;
         healthText.text = "Health: " + unit.currentHealth + "/" + unit.maxHealth;
     }
 
-    private void Start()
-    {
-        col = FindFirstObjectByType<Collider2D>();
-    }
 
     private void Update()
     {
@@ -34,32 +30,28 @@ public class UnitUI : MonoBehaviour
 
     private void Raycast2D()
     {
+        //if left click
         if(Input.GetMouseButtonDown(0))
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // get the mouse position using the camera
 
-            if (hit.collider != null)
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero); //make a raycast to see what its hitting
+
+            if (hit.collider != null) //if it hits something
             {
-                Debug.Log(hit.collider.gameObject.transform.parent);
-                if (hit.collider.transform.IsChildOf(transform))
+                Debug.Log(hit.collider.gameObject.transform.parent); //debugging purposes
+                if (hit.collider.transform.IsChildOf(transform)) //if it hits the gameobject that this script is on
                 {
-                    currentlySelected = true;
+                    battleManager.currentlySelected = true;
+                    handUIManager.DisplayHand(this.gameObject.GetComponent<UnitBehaviour>().Instance.Deck.Hand);
                     Debug.Log("hit this col");
                 }
                 else
                 {
-                    currentlySelected = false;
+                    battleManager.currentlySelected = false;
                 }
             }
         }
     }
 
-    private void OnGUI()
-    {
-        if (currentlySelected)
-        {
-            GUI.Label(new Rect(10, 10, 200, 20), "Currently Selected: " + nameText.text);
-        }
-    }
 }

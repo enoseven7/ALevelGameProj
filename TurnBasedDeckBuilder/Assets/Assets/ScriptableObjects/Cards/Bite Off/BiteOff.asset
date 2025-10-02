@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89d103082b11cbe4b893c01249e8b544, type: 3}
-  m_Name: TripleSlash
+  m_Name: BiteOff
   m_EditorClassIdentifier: 
   atkDice:
-  - {fileID: 11400000, guid: 9e5e0d9217e927a49b0c76ebd5bf5dbe, type: 2}
-  - {fileID: 11400000, guid: fe5b9b65532d4054fa01d844f8cd8372, type: 2}
-  - {fileID: 11400000, guid: c87455c4b9044ee4ea7e97b53b901a5c, type: 2}
-  energyCost: 3
+  - {fileID: 11400000, guid: 7fdf86dbbc20cf349b53d5d176506d7d, type: 2}
+  - {fileID: 11400000, guid: 3cd78f23480ca614a93e303e4b8b5ed1, type: 2}
+  energyCost: 2
   cardImg: {fileID: 0}
-  cardName: Triple Slash
+  cardName: Bite Off
   atkDiceSprites:
   - {fileID: -6939695964637348897, guid: 8c5989fc57528a048a28e1aea786a883, type: 3}
-  - {fileID: -6939695964637348897, guid: 8c5989fc57528a048a28e1aea786a883, type: 3}
-  - {fileID: -6939695964637348897, guid: 8c5989fc57528a048a28e1aea786a883, type: 3}
+  - {fileID: -5287789555553424294, guid: 318280f118a8c164eb15dd689098e3ce, type: 3}

@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class UnitInstance
+public class UnitInstance : MonoBehaviour
 {
     public UnitScriptableObject baseData;
 
-    public string name { get; private set; }
+    public string unitName { get; private set; }
     public float currentHealth { get; private set; }
 
     public float maxHealth { get; private set; }
@@ -21,7 +21,7 @@ public class UnitInstance
     {
         this.baseData = baseData;
 
-        name = baseData.UnitName;
+        unitName = baseData.UnitName;
         currentHealth = baseData.Health;
         maxHealth = baseData.Health;
         currentStagger = baseData.Stagger;

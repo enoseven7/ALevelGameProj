@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: c2785739fdad40f4ca66b2e6c86227a0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - unitPrefab: {instanceID: 0}
+  - unitContainer: {instanceID: 0}
+  - placeholderSprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,5 +1,7 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "CardScriptableObject", menuName = "ScriptableObjects/CardScriptableObject")]
 public class CardScriptableObject : ScriptableObject
@@ -19,5 +21,9 @@ public class CardScriptableObject : ScriptableObject
     [SerializeField]
     string cardName;
     public string CardName { get => cardName; private set => cardName = value; }
+
+    [SerializeField]
+    List<Sprite> atkDiceSprites;
+    public List<Sprite> AtkDiceSprites { get => atkDiceSprites; private set => atkDiceSprites = value;}
 
 }
