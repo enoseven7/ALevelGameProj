@@ -11,6 +11,9 @@ public class UnitUI : MonoBehaviour
 
     public BattleManager battleManager;
     public HandUIManager handUIManager;
+
+    public Transform speedDiceContainer;
+    public GameObject speedDieSlotPrefab;
     public void Initialise(UnitInstance unitInstance)
     {
         unit = unitInstance;
@@ -20,6 +23,9 @@ public class UnitUI : MonoBehaviour
 
         nameText.text = unit.unitName;
         healthText.text = "Health: " + unit.currentHealth + "/" + unit.maxHealth;
+
+        InitSpeedDice(unit.speedDice.Count);
+        Debug.Log("Speed die count: " + unit.speedDice.Count);
     }
 
 
@@ -42,15 +48,33 @@ public class UnitUI : MonoBehaviour
                 Debug.Log(hit.collider.gameObject.transform.parent); //debugging purposes
                 if (hit.collider.transform.IsChildOf(transform)) //if it hits the gameobject that this script is on
                 {
-                    battleManager.currentlySelected = true;
+                    battleManager.currentlySelected = unit;
                     handUIManager.DisplayHand(this.gameObject.GetComponent<UnitBehaviour>().Instance.Deck.Hand);
                     Debug.Log("hit this col");
                 }
-                else
-                {
-                    battleManager.currentlySelected = false;
-                }
             }
+        }
+    }
+
+    public void InitSpeedDice(int diceCount)
+    {
+        if(speedDiceContainer.childCount > 0)
+        {
+            foreach (Transform child in speedDiceContainer)
+                Destroy(child.gameObject);
+        }
+
+        
+        for (int i = 0; i < diceCount; i++)
+        {
+            GameObject slot = Instantiate(speedDieSlotPrefab, speedDiceContainer);
+            Debug.Log("spawned in");
+            slot.name = $"SpeedDieSlot_{i + 1}";
+
+ 
+            var slotUI = slot.GetComponent<SpeedDiceSlotUI>();
+            slotUI.Init(unit, i);
+            slotUI.slot = new SpeedDieSlot();
         }
     }
 

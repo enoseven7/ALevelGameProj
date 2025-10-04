@@ -5,7 +5,9 @@ using TMPro;
 public class CardUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text nameText;
-    [SerializeField] private Image[] diceImages; 
+    [SerializeField] private Image[] diceImages;
+
+    public CardDrag cardDrag;
 
     public void SetCard(CardScriptableObject cardData, Sprite placeholder = null)
     {
@@ -14,7 +16,7 @@ public class CardUI : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
-
+        //cardDrag.cardData = cardData;
         nameText.text = cardData.CardName;
 
         // reset dice slots

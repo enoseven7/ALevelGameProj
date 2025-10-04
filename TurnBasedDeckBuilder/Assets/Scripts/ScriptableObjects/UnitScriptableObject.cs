@@ -80,6 +80,8 @@ public class UnitScriptableObject : ScriptableObject
 
     [SerializeField] private List<SpeedDice> speedDiceList;
 
+    public List<SpeedDice> SpeedDiceList {  get => speedDiceList;  set => speedDiceList = value; }
+
     [SerializeField] private DeckScriptableObject deck;
     public DeckScriptableObject Deck {  get => deck; set => deck = value; }
 

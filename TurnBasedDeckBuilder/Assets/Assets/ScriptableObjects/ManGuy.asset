@@ -35,8 +35,8 @@ MonoBehaviour:
     resistanceType: 1
     value: 2
   speedDiceList:
-  - minRoll: 0
-    maxRoll: 0
-    enabledAtStart: 0
+  - minRoll: 3
+    maxRoll: 5
+    enabledAtStart: 1
   deck: {fileID: 11400000, guid: 09d0a93ed300ced479d67d95ccf0ed8a, type: 2}
   player: 1

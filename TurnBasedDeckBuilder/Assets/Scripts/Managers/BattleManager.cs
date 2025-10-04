@@ -19,7 +19,7 @@ public class BattleManager : MonoBehaviour
 
     public List<GameObject> cardUIs = new List<GameObject>();
 
-    public bool currentlySelected = false;
+    public UnitInstance currentlySelected;
 
     public Sprite placeholderSprite;
 

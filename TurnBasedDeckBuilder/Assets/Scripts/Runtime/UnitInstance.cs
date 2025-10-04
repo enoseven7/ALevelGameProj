@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class UnitInstance : MonoBehaviour
 {
@@ -17,6 +19,8 @@ public class UnitInstance : MonoBehaviour
 
     public DeckInstance Deck { get; private set; }
 
+    public List<SpeedDieSlot> speedDice;
+
     public UnitInstance(UnitScriptableObject baseData)
     {
         this.baseData = baseData;
@@ -27,6 +31,14 @@ public class UnitInstance : MonoBehaviour
         currentStagger = baseData.Stagger;
         maxStagger = baseData.Stagger;
         player = baseData.Player;
+
+        speedDice = new List<SpeedDieSlot>(baseData.SpeedDiceList.Count);
+        
+        foreach (var die in baseData.SpeedDiceList)
+        {
+            SpeedDieSlot newDie = new SpeedDieSlot();
+            speedDice.Add(newDie);
+        }
 
         Deck = new DeckInstance(baseData.Deck);
     }
